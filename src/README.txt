@@ -83,3 +83,5 @@ Artisan uses the following libraries in unmodified forms:
 
 See <https://github.com/artisan-roaster-scope/artisan>
 This is only a test
+help
+./
