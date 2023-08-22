@@ -31,12 +31,16 @@ environment:
     appveyor_build_worker_image: macos-bigsur
   - job_name: linux
     appveyor_build_worker_image: Ubuntu2004
-
+    
+environment:
+  GITHUB_TOKEN:
+    secure: Q5dvUoEX9LGsVgIJxP7cbgeA6XLKNOhMebIfq8VzOb6ptmJ7hmjjXSwkNbDzxNaX
 
 # Generic build number, later set to commit hash by init
 version: '{build}'
 
 # Do not build on tags
+
 skip_tags: true
 clone_depth: 1
 
