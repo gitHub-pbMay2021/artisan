@@ -21,6 +21,8 @@ environment:
   PYTHON_V: 3.11
   # Upgrade to specific version (for platforms supporting upgrade). Upgrade skipped if env var is missing or blank.
   PYUPGRADE_V: 3.11.4
+  GITHUB_TOKEN:
+    secure: Q5dvUoEX9LGsVgIJxP7cbgeA6XLKNOhMebIfq8VzOb6ptmJ7hmjjXSwkNbDzxNaX
 
   matrix:
   - job_name: windows_legacy
