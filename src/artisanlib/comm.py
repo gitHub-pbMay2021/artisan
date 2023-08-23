@@ -1670,8 +1670,13 @@ class serialport:
         return tx,t2,t1
 
     # EXTECH755 Device
-    # returns t1,t2 from EXTECH 755. By Bailey Glen
+    # returns t1,t2 from EXTECH 755. By Bailey Glen, edited by PBoyle Aug 2023
     def EXTECH755pressure(self, retry:int=2) -> Tuple[float,float]:
+        # As documented in the "HD700 PC Communication Protocol" received from Teledyne FLIR Technical Support in March 2023:
+        #   the computer sends 0x55 0xaa 0x01 to indicate that the computer is ready to receive data
+        #   the meter responds with 0xaa 0x56 HexDigitIndicatingUnitOfMeasure SignBit LowVoltageIndicator 5DigitsOfData
+        #      e.g. 0xaa 0x56 0x00 0x01 0xff 1.234
+        EXTECH755GETREADINGCMD = b'\x55\xaa\x01'
         r = b''
         try:
             if not self.SP.is_open:
@@ -1679,7 +1684,7 @@ class serialport:
             if self.SP.is_open:
                 self.SP.reset_input_buffer()
                 self.SP.reset_output_buffer()
-                self.SP.write(b'\x56\xaa\x01')
+                self.SP.write(EXTECH755GETREADINGCMD)
                 r = self.SP.read(10)
                 if len(r) == 10:
                     ##Single  line to return pressure twice. obviously only need to do this once.
