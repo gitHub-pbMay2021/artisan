@@ -54,8 +54,8 @@ notifications_url: Final[str] = api_base_url + '/notifications'
 
 # Connection configurations
 
-#verify_ssl: Final[bool] = False
-verify_ssl: Final[bool] = True
+verify_ssl: Final[bool] = False
+#PB 25Aug2023FIX_ME verify_ssl: Final[bool] = True
 connect_timeout: Final[int] = 2  # in seconds
 read_timeout: Final[int] = 4  # in seconds
 min_passwd_len: Final[int] = 4
